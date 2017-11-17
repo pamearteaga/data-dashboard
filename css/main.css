@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900');
+
+
+body{
+
+	margin: 0;
+	padding: 0;
+	background-color: #f7f7f7;
+	font-family: 'Roboto', sans-serif;
+}
+
+main {
+
+	padding-top: 2%;
+
+	
+}
+
+h2{
+
+	margin-bottom: 40px;
+	color: #666;
+}
+
+#sup{
+    
+   padding: 2% 4%;
+}
+
+.datasup {
+    
+    width: 25%;
+    height: 362px;
+	background-color: white;
+    padding: 0 25px;
+    display: inline-block;
+    margin-left: 5.5%;
+    vertical-align: top;
+
+}
+
+
+.datasup:first-child{
+
+	margin-left: 0;
+	
+}
+
+
+.datasup img{
+
+	width: 100%;
+}
+
+.datasup ul{
+
+	list-style: none;
+	display: inline;
+	padding: 0;
+}
+
+.datasup li{
+
+    width: 45%;
+	display: inline-block;
+	list-style: none;
+	vertical-align: text-top;
+	text-align: center;
+}
+
+.datasup li span{
+
+    font-weight: 600;
+    font-size: 30px;
+
+}
+
+
+.datasup li p{
+
+    font-weight: 500;
+    font-size: 11px;
+    color: #666;
+    text-transform: uppercase;
+
+}
+
+.red{
+    color: red;
+}
+
+.green{
+    color: green;
+}
+
+
+
+
+
+
