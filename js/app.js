@@ -93,20 +93,20 @@ for (var i = 0; i < generacion.length; i++) {
 // VARIABLES SPRINTS
 
 var sprint1 = [];
-var sprint1MetaHSE = 800;
-var sprint1MetaTech = 1100;
+var sprint1MetaHSE = 840;
+var sprint1MetaTech = 1260;
 
 var sprint2 = [];
-var sprint2MetaHSE = 800;
-var sprint2MetaTech = 1200;
+var sprint2MetaHSE = 840;
+var sprint2MetaTech = 1260;
 
 var sprint3 = [];
-var sprint3MetaHSE = 800;
-var sprint3MetaTech = 1300;
+var sprint3MetaHSE = 840;
+var sprint3MetaTech = 1260;
 
 var sprint4 = [];
-var sprint4MetaHSE = 800;
-var sprint4MetaTech = 1400;
+var sprint4MetaHSE = 840;
+var sprint4MetaTech = 1260;
 
 
 
@@ -118,7 +118,6 @@ for (var i = 0; i < generacion.length; i++) { // variables de notas para cada sp
     sprint4.push(generacion[i].sprints[3]);
     
 }
-
 
 
 
@@ -209,7 +208,31 @@ sprint3TechMetaPorcentaje = parseInt((sprint3TechMeta * 100) / sprint3Tech.lengt
 sprint4TechMetaPorcentaje = parseInt((sprint4TechMeta * 100) / sprint4Tech.length) // porcentaje de alumnas que alcanzaron la meta en el sprint4
 
 
+// PARA SACAR PROMEDIO DE NOTAS TECH
 
+for (var i = 0; i < sprint1Tech.length; i++) {
+	
+	var sprint1TechPromedio = parseInt((sprint1TechNotas += sprint1Tech[i])/total);
+
+}
+
+for (var i = 0; i < sprint2Tech.length; i++) {
+	
+	var sprint2TechPromedio = parseInt((sprint2TechNotas += sprint2Tech[i])/total);
+
+}
+
+for (var i = 0; i < sprint3Tech.length; i++) {
+	
+	var sprint3TechPromedio = parseInt((sprint3TechNotas += sprint3Tech[i])/total);
+
+}
+
+for (var i = 0; i < sprint4Tech.length; i++) {
+	
+	var sprint4TechPromedio = parseInt((sprint4TechNotas += sprint4Tech[i])/total);
+
+}
 
 
 
@@ -246,6 +269,7 @@ var sprint4HSEPromedio = 0; // promedio de notas
 
 
 
+
 for (var i = 0; i < sprint1.length; i++) { // array con notas de HSE por sprint
 
 	sprint1HSE.push(sprint1[i].score['hse']);
@@ -260,11 +284,9 @@ for (var i = 0; i < sprint1HSE.length; i++) {// cantidad de alumnas que alcanzan
 	if (sprint1HSE[i] >= sprint1MetaHSE) {
 
          ++sprint1HSEMeta
-		//sprint1HSEMeta.push(sprint1HSE[i]); //para sacar las notas
+		
 	}
 }
-
-
 
 
 for (var i = 0; i < sprint2HSE.length; i++) {// cantidad de alumnas que alcanzan la meta en el sprint2
@@ -301,13 +323,31 @@ sprint3HSEMetaPorcentaje = parseInt((sprint3HSEMeta * 100) / sprint3HSE.length) 
 
 sprint4HSEMetaPorcentaje = parseInt((sprint4HSEMeta * 100) / sprint4HSE.length) // porcentaje de alumnas que alcanzaron la meta en el sprint4
 
+;
 
-
-// PARA SACAR PROMEDIO DE HSE
+// PARA SACAR PROMEDIO DE NOTAS HSE
 
 for (var i = 0; i < sprint1HSE.length; i++) {
 	
 	var sprint1HSEPromedio = parseInt((sprint1HSENotas += sprint1HSE[i])/total);
+
+}
+
+for (var i = 0; i < sprint2HSE.length; i++) {
+	
+	var sprint2HSEPromedio = parseInt((sprint2HSENotas += sprint2HSE[i])/total);
+
+}
+
+for (var i = 0; i < sprint3HSE.length; i++) {
+	
+	var sprint3HSEPromedio = parseInt((sprint3HSENotas += sprint3HSE[i])/total);
+
+}
+
+for (var i = 0; i < sprint4HSE.length; i++) {
+	
+	var sprint4HSEPromedio = parseInt((sprint4HSENotas += sprint4HSE[i])/total);
 
 }
 
@@ -320,7 +360,7 @@ var sprint1Meta = (sprint1HSEMeta + sprint1TechMeta) / 2;
 var sprint2Meta = (sprint2HSEMeta + sprint2TechMeta) / 2;
 var sprint3Meta = (sprint3HSEMeta + sprint3TechMeta) / 2;
 var sprint4Meta = (sprint4HSEMeta + sprint4TechMeta) / 2;
-var sprintsMetaTotal = (sprint1Meta + sprint2Meta + sprint3Meta + sprint4Meta) / 4;
+var sprintsMetaTotal = (sprint1Meta + sprint2Meta + sprint3Meta + sprint4Meta) / 4; // no seusó parseInt en este resultado ya que cambiaba mucho el porcentaje real
 var sprintsMetaPorcentaje = parseInt((sprintsMetaTotal * 100) / total);
 
 
@@ -354,6 +394,79 @@ var porcentajeLogro = document.createElement("span");
     var textoPorLogro = document.createTextNode("of total " + total);
     frasePorLogro.appendChild(textoPorLogro);
     contPorLogro.appendChild(frasePorLogro);
+
+
+
+/* promedio - recuadro TECH SKILLS */
+
+var contMetaTech = document.getElementById("tech");
+var contMetaTechEstudiantes = document.createElement("li");
+var contMetaTechPorcentaje = document.createElement("li");
+var metaTech = document.createElement("span");
+var porcentajeMetaTech = document.createElement("span");
+var todasMetasTech = (sprint1TechMeta + sprint2TechMeta + sprint3TechMeta + sprint4TechMeta) / 4; // promedio de alumnas que alcanzaron la meta tech
+var todasMetasTechPorcentaje = parseInt((todasMetasTech * 100) / total);
+
+
+// promedio de cantidad de alumnas que lograron las meta TECH en los 4 sprint
+    metaTech.appendChild(document.createTextNode(todasMetasTech));
+    contMetaTechEstudiantes.appendChild(metaTech);
+    contMetaTech.appendChild(contMetaTechEstudiantes);
+    // frase
+    var fraseMetaTech = document.createElement("p");
+    var textoMetaTech = document.createTextNode("# Students that meet the target");
+    fraseMetaTech.appendChild(textoMetaTech);
+    contMetaTechEstudiantes.appendChild(fraseMetaTech);
+
+   //porcentaje de alumnas que alcanzaron la meta TECH en los 4 sprint
+    porcentajeMetaTech.appendChild(document.createTextNode(todasMetasTechPorcentaje + "%"));
+    porcentajeMetaTech.setAttribute("class", "green");
+    contMetaTechPorcentaje.appendChild(porcentajeMetaTech);
+    contMetaTech.appendChild(contMetaTechPorcentaje);
+
+    var frasePorcentajeMetaTech = document.createElement("p");
+    var textoPorcentajeMetaTech = document.createTextNode("of total " + total);
+    frasePorcentajeMetaTech.appendChild(textoPorcentajeMetaTech);
+    contMetaTechPorcentaje.appendChild(frasePorcentajeMetaTech);
+
+
+
+
+
+
+/* promedio - recuadro LIFE SKILLS */
+
+var contMetaHSE = document.getElementById("hse");
+var contMetaHSEEstudiantes = document.createElement("li");
+var contMetaHSEPorcentaje = document.createElement("li");
+var metaHSE = document.createElement("span");
+var porcentajeMetaHSE = document.createElement("span");
+var todasMetasHSE = (sprint1HSEMeta + sprint2HSEMeta + sprint3HSEMeta + sprint4HSEMeta) / 4; // promedio de alumnas que alcanzaron la meta HSE
+var todasMetasHSEPorcentaje = parseInt((todasMetasHSE * 100) / total);
+
+
+// promedio de cantidad de alumnas que lograron las meta TECH en los 4 sprint
+    metaHSE.appendChild(document.createTextNode(todasMetasHSE));
+    contMetaHSEEstudiantes.appendChild(metaHSE);
+    contMetaHSE.appendChild(contMetaHSEEstudiantes);
+    // frase
+    var fraseMetaHSE = document.createElement("p");
+    var textoMetaHSE = document.createTextNode("# Students that meet the target");
+    fraseMetaHSE.appendChild(textoMetaHSE);
+    contMetaHSEEstudiantes.appendChild(fraseMetaHSE);
+
+   //porcentaje de alumnas que alcanzaron la meta TECH en los 4 sprint
+    porcentajeMetaHSE.appendChild(document.createTextNode(todasMetasHSEPorcentaje + "%"));
+    porcentajeMetaHSE.setAttribute("class", "green");
+    contMetaHSEPorcentaje.appendChild(porcentajeMetaHSE);
+    contMetaHSE.appendChild(contMetaHSEPorcentaje);
+
+    var frasePorcentajeMetaHSE = document.createElement("p");
+    var textoPorcentajeMetaHSE = document.createTextNode("of total " + total);
+    frasePorcentajeMetaHSE.appendChild(textoPorcentajeMetaHSE);
+    contMetaHSEPorcentaje.appendChild(frasePorcentajeMetaHSE);
+
+
 
 
 

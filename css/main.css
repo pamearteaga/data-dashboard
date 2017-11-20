@@ -5,7 +5,6 @@ body{
 
 	margin: 0;
 	padding: 0;
-	background-color: #f7f7f7;
 	font-family: 'Roboto', sans-serif;
 }
 
@@ -36,6 +35,7 @@ h2{
     display: inline-block;
     margin-left: 5.5%;
     vertical-align: top;
+    border: 1px #ffc107 dotted;
 
 }
 
@@ -50,6 +50,7 @@ h2{
 .datasup img{
 
 	width: 100%;
+
 }
 
 .datasup ul{
@@ -77,6 +78,66 @@ h2{
 
 
 .datasup ul p{
+
+    font-weight: 500;
+    font-size: 11px;
+    color: #666;
+    text-transform: uppercase;
+
+}
+
+
+.datacentro {
+    
+    width: 39.5%;
+    height: 400px;
+	background-color: white;
+    padding: 0 25px;
+    display: inline-block;
+    margin: 2.5% 0 2.5% 4%;
+    vertical-align: top;
+    border: 1px #ffc107 dotted;
+
+}
+
+
+.datacentro h2{
+
+	font-size: 2em;
+}
+
+
+.datacentro img{
+
+	width: 47%;
+	margin: 20px 0;
+}
+
+.datacentro ul{
+
+	list-style: none;
+	display: inline;
+	padding: 0;
+}
+
+.datacentro li{
+
+    width: 48%;
+	display: inline-block;
+	list-style: none;
+	vertical-align: text-top;
+	text-align: center;
+}
+
+.datacentro li span{
+
+    font-weight: 600;
+    font-size: 45px;
+
+}
+
+
+.datacentro ul p{
 
     font-weight: 500;
     font-size: 11px;
