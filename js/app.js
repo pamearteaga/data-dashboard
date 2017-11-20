@@ -1,5 +1,8 @@
 
+google.charts.load('current', {'packages':['corechart']}); // graficos
+
 console.log(data);
+
 
 
 /*
@@ -28,7 +31,7 @@ console.log(estudiante);
 
 */
 
-var generacion = data.AQP['2016-2'].students;
+var generacion = data.LIM['2017-1'].students; 
 
 
 /* inscritas y bajas - recuadro ENROLLMENT */
@@ -59,6 +62,8 @@ for (var i = 0; i < generacion.length; i++) {
 	}
 
 }
+
+
 
 
  porcentaje = parseInt((bajasCont * 100) / total);
@@ -93,29 +98,26 @@ for (var i = 0; i < generacion.length; i++) {
 // VARIABLES SPRINTS
 
 var sprint1 = [];
-var sprint1MetaHSE = 840;
-var sprint1MetaTech = 1260;
-
 var sprint2 = [];
-var sprint2MetaHSE = 840;
-var sprint2MetaTech = 1260;
-
 var sprint3 = [];
-var sprint3MetaHSE = 840;
-var sprint3MetaTech = 1260;
-
 var sprint4 = [];
-var sprint4MetaHSE = 840;
-var sprint4MetaTech = 1260;
 
+var sprintMetaHSE = 840;
+var sprintMetaTech = 1260;
 
 
 for (var i = 0; i < generacion.length; i++) { // variables de notas para cada sprint
 	
-    sprint1.push(generacion[i].sprints[0]);
-    sprint2.push(generacion[i].sprints[1]);
-    sprint3.push(generacion[i].sprints[2]);
-    sprint4.push(generacion[i].sprints[3]);
+	if (generacion[i].active === true ) {
+         
+
+	    sprint1.push(generacion[i].sprints[0]);
+	    sprint2.push(generacion[i].sprints[1]);
+	    //sprint3.push(generacion[i].sprints[2]);
+	    //sprint4.push(generacion[i].sprints[3]);
+
+	}
+    
     
 }
 
@@ -156,16 +158,21 @@ var sprint4TechPromedio = 0; // promedio de notas
 
 for (var i = 0; i < sprint1.length; i++) { // array con notas de Tech por sprint
 
+
 	sprint1Tech.push(sprint1[i].score['tech']);
 	sprint2Tech.push(sprint2[i].score['tech']);
-	sprint3Tech.push(sprint3[i].score['tech']);
-	sprint4Tech.push(sprint4[i].score['tech']);
+	//sprint3Tech.push(sprint3[i].score['tech']);
+	//sprint4Tech.push(sprint4[i].score['tech']);
 
 }
 
+
+
+
+
 for (var i = 0; i < sprint1Tech.length; i++) {// cantidad de alumnas que alcanzan la meta en el sprint1
 	
-	if (sprint1Tech[i] >= sprint1MetaTech) {
+	if (sprint1Tech[i] >= sprintMetaTech) {
 
          ++sprint1TechMeta
 		
@@ -174,7 +181,7 @@ for (var i = 0; i < sprint1Tech.length; i++) {// cantidad de alumnas que alcanza
 
 for (var i = 0; i < sprint2Tech.length; i++) {// cantidad de alumnas que alcanzan la meta en el sprint2
 	
-	if (sprint2Tech[i] >= sprint2MetaTech) {
+	if (sprint2Tech[i] >= sprintMetaTech) {
 
          ++sprint2TechMeta
 		
@@ -183,7 +190,7 @@ for (var i = 0; i < sprint2Tech.length; i++) {// cantidad de alumnas que alcanza
 
 for (var i = 0; i < sprint3Tech.length; i++) {// cantidad de alumnas que alcanzan la meta en el sprint3
 	
-	if (sprint3Tech[i] >= sprint3MetaTech) {
+	if (sprint3Tech[i] >= sprintMetaTech) {
 
          ++sprint3TechMeta
 		
@@ -192,7 +199,7 @@ for (var i = 0; i < sprint3Tech.length; i++) {// cantidad de alumnas que alcanza
 
 for (var i = 0; i < sprint4Tech.length; i++) {// cantidad de alumnas que alcanzan la meta en el sprint4
 	
-	if (sprint4Tech[i] >= sprint4MetaTech) {
+	if (sprint4Tech[i] >= sprintMetaTech) {
 
          ++sprint4TechMeta
 		
@@ -274,14 +281,14 @@ for (var i = 0; i < sprint1.length; i++) { // array con notas de HSE por sprint
 
 	sprint1HSE.push(sprint1[i].score['hse']);
 	sprint2HSE.push(sprint2[i].score['hse']);
-	sprint3HSE.push(sprint3[i].score['hse']);
-	sprint4HSE.push(sprint4[i].score['hse']);
+	//sprint3HSE.push(sprint3[i].score['hse']);
+	//sprint4HSE.push(sprint4[i].score['hse']);
 
 }
 
 for (var i = 0; i < sprint1HSE.length; i++) {// cantidad de alumnas que alcanzan la meta en el sprint1
 	
-	if (sprint1HSE[i] >= sprint1MetaHSE) {
+	if (sprint1HSE[i] >= sprintMetaHSE) {
 
          ++sprint1HSEMeta
 		
@@ -291,7 +298,7 @@ for (var i = 0; i < sprint1HSE.length; i++) {// cantidad de alumnas que alcanzan
 
 for (var i = 0; i < sprint2HSE.length; i++) {// cantidad de alumnas que alcanzan la meta en el sprint2
 	
-	if (sprint2HSE[i] >= sprint2MetaHSE) {
+	if (sprint2HSE[i] >= sprintMetaHSE) {
 
          ++sprint2HSEMeta
 		
@@ -300,7 +307,7 @@ for (var i = 0; i < sprint2HSE.length; i++) {// cantidad de alumnas que alcanzan
 
 for (var i = 0; i < sprint3HSE.length; i++) {// cantidad de alumnas que alcanzan la meta en el sprint3
 	
-	if (sprint3HSE[i] >= sprint3MetaHSE) {
+	if (sprint3HSE[i] >= sprintMetaHSE) {
 
          ++sprint3HSEMeta
 	}
@@ -308,7 +315,7 @@ for (var i = 0; i < sprint3HSE.length; i++) {// cantidad de alumnas que alcanzan
 
 for (var i = 0; i < sprint4HSE.length; i++) {// cantidad de alumnas que alcanzan la meta en el sprint4
 	
-	if (sprint4HSE[i] >= sprint4MetaHSE) {
+	if (sprint4HSE[i] >= sprintMetaHSE) {
 
          ++sprint4HSEMeta
 	}
@@ -360,7 +367,7 @@ var sprint1Meta = (sprint1HSEMeta + sprint1TechMeta) / 2;
 var sprint2Meta = (sprint2HSEMeta + sprint2TechMeta) / 2;
 var sprint3Meta = (sprint3HSEMeta + sprint3TechMeta) / 2;
 var sprint4Meta = (sprint4HSEMeta + sprint4TechMeta) / 2;
-var sprintsMetaTotal = (sprint1Meta + sprint2Meta + sprint3Meta + sprint4Meta) / 4; // no seusó parseInt en este resultado ya que cambiaba mucho el porcentaje real
+var sprintsMetaTotal = parseInt((sprint1Meta + sprint2Meta + sprint3Meta + sprint4Meta) / 4); // no seusó parseInt en este resultado ya que cambiaba mucho el porcentaje real
 var sprintsMetaPorcentaje = parseInt((sprintsMetaTotal * 100) / total);
 
 
@@ -404,7 +411,7 @@ var contMetaTechEstudiantes = document.createElement("li");
 var contMetaTechPorcentaje = document.createElement("li");
 var metaTech = document.createElement("span");
 var porcentajeMetaTech = document.createElement("span");
-var todasMetasTech = (sprint1TechMeta + sprint2TechMeta + sprint3TechMeta + sprint4TechMeta) / 4; // promedio de alumnas que alcanzaron la meta tech
+var todasMetasTech = parseInt((sprint1TechMeta + sprint2TechMeta + sprint3TechMeta + sprint4TechMeta) / 4); // promedio de alumnas que alcanzaron la meta tech
 var todasMetasTechPorcentaje = parseInt((todasMetasTech * 100) / total);
 
 
@@ -441,7 +448,7 @@ var contMetaHSEEstudiantes = document.createElement("li");
 var contMetaHSEPorcentaje = document.createElement("li");
 var metaHSE = document.createElement("span");
 var porcentajeMetaHSE = document.createElement("span");
-var todasMetasHSE = (sprint1HSEMeta + sprint2HSEMeta + sprint3HSEMeta + sprint4HSEMeta) / 4; // promedio de alumnas que alcanzaron la meta HSE
+var todasMetasHSE = parseInt((sprint1HSEMeta + sprint2HSEMeta + sprint3HSEMeta + sprint4HSEMeta) / 4); // promedio de alumnas que alcanzaron la meta HSE
 var todasMetasHSEPorcentaje = parseInt((todasMetasHSE * 100) / total);
 
 
@@ -470,19 +477,165 @@ var todasMetasHSEPorcentaje = parseInt((todasMetasHSE * 100) / total);
 
 
 
+/********* VARIABLES PARA DATOS RATING ********/
+
+
+for (var i = 0; i < generacion.length; i++) { // variables de notas para cada sprint
+	
+	if (generacion[i].active === true ) {
+         
+
+	    sprint1.push(generacion[i].sprints[0]);
+	    sprint2.push(generacion[i].sprints[1]);
+	    //sprint3.push(generacion[i].sprints[2]);
+	    //sprint4.push(generacion[i].sprints[3]);
+
+	}
+    
+    
+}
+
+
+
+for (var i = 0; i < generacion.length; i++) {
+	
+	total++;
+
+
+	if (generacion[i].active === true ) {
+         
+        ++inscCont;
+
+	} else if (generacion[i].active === false) {
+
+		++bajasCont;
+	}
+
+}
 
 
 
 
 
 
+/*************** GRÁFICOS ***************/
+
+
+// GRÁFICO BARRAS VERTICALES
+
+
+google.charts.setOnLoadCallback(graficoBarras);
+   function graficoBarras() {
+     var data = google.visualization.arrayToDataTable([
+       ["S1", "Density", { role: "style" } ],
+       ["S1", sprint1Meta, "#FFC300 "],
+       ["S2", sprint2Meta, "#FFC300 "],
+      
+     ]);
+
+     var view = new google.visualization.DataView(data);
+     view.setColumns([0, 1,
+                      { calc: "stringify",
+                        sourceColumn: 1,
+                        type: "string",
+                        role: "annotation" },
+                      2]);
+
+     var options = {
+       width: 300,
+       height: 200,
+       bar: {groupWidth: "95%"},
+       legend: { position: "none" },
+     };
+     var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+     chart.draw(view, options);
+ }
 
 
 
+// GRÁFICO RECUADRO ENROLLMENT
+
+google.charts.setOnLoadCallback(graficoTorta);
+     function graficoTorta() {
+       var data = google.visualization.arrayToDataTable([
+         ['Language', 'Speakers (in millions)'],
+         ['Dropout',  bajasCont],
+         ['Currently', inscCont],
+      
+       
+       ]);
+
+     var options = {
+       legend: 'none',
+       pieSliceText: 'label',
+       pieStartAngle: 180,
+       slices: {
+           0: { color: '#b87333' },
+           1: { color: '#ffc300' }
+         }
+
+     };
+
+       var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+       chart.draw(data, options);
+     }
 
 
+// GRAFICO TECH
 
+google.charts.setOnLoadCallback(graficoHorizontal);
+   function graficoHorizontal() {
+     var data = google.visualization.arrayToDataTable([
+       ["Element", "Density", { role: "style" } ],
+       ["S1", sprint1TechMeta, "orange"],
+       ["S2", sprint2TechMeta, "yellow"],
+       
+     ]);
+
+     var view = new google.visualization.DataView(data);
+     view.setColumns([0, 1,
+                      { calc: "stringify",
+                        sourceColumn: 1,
+                        type: "string",
+                        role: "annotation" },
+                      2]);
+
+     var options = {
+
+       width: 250,
+       height: 250,
+       bar: {groupWidth: "95%"},
+       legend: { position: "none" },
+     };
+     var chart = new google.visualization.BarChart(document.getElementById("barra-tech"));
+     chart.draw(view, options);
+ }
         
+
+        google.charts.setOnLoadCallback(tortaTech);
+     function tortaTech() {
+       var data = google.visualization.arrayToDataTable([
+         ['Language', 'Speakers (in millions)'],
+         ['Dont meet target',  83],
+         ['Target', todasMetasTechPorcentaje],
+      
+       
+       ]);
+
+     var options = {
+       legend: 'none',
+       pieSliceText: 'label',
+       pieStartAngle: 90,
+       slices: {
+           0: { color: '#b87333' },
+           1: { color: '#ffc300' }
+         }
+
+     };
+
+       var chart = new google.visualization.PieChart(document.getElementById('torta-tech'));
+       chart.draw(data, options);
+     }
 
         
 

@@ -5,8 +5,57 @@
     <title>Data Dashboard</title>
 
     <link rel="stylesheet" type="text/css" href="css/main.css">
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   </head>
   <body>
+
+  <header>
+    <section id="contenedorInicial">
+     <h1 class="titu"><img src="assets/images/logo-laboratoria.svg" alt="logoLab"></h1>
+   </section>
+
+   <!--menu desplegable-->
+   <div  id="header">
+     <ul class="nav">
+       <li><a href="#">SEDES</a>
+         <ul>
+           <li><a href="#" class="titulo">Arequipa</a>
+             <ul>
+               <li><a href="#">Generacion 2016</a></li>
+               <li><a href="#">generacion 2017</a></li>
+             </ul>
+
+           </li>
+           <li><a href="#" class="titulo">LIma</a>
+              <ul>
+               <li><a href="#">Generacion 2016</a></li>
+               <li><a href="#">generacion 2017</a></li>
+             </ul>
+           </li>
+           <li><a href="#" class="titulo">Santiago</a>
+             <ul>
+               <li><a href="#">Generacion 2016</a></li>
+               <li><a href="#">generacion 2017</a></li>
+             </ul>
+
+           </li>
+           <li><a href="#" class="titulo">Mexico</a>
+             <ul>
+               <li><a href="#">Generacion 2016</a></li>
+               <li><a href="#">generacion 2017</a></li>
+             </ul>
+
+           </li>
+         </ul>
+
+       </li>
+     </ul>
+   </div>
+
+     
+   </section>
+   </header>
 
     <main>
 
@@ -19,9 +68,10 @@
 
       <ul id="inscritas-bajas">
         
-       
       </ul>
-      <img src="assets/images/bar-graph.png">
+
+      <div id="piechart" style="width: 220px; height:220px; margin-left: 40px;"></div>
+      
       
     </div>
 
@@ -33,7 +83,7 @@
       <ul id="meta">
 
       </ul>
-      <img src="assets/images/graph.png">
+      <div id="columnchart_values" style = "width: 350px; height:100px; display: inline-block;"></div>
     </div>
 
 
@@ -58,14 +108,11 @@
         <h2>TECH SKILLS</h2>
 
           <ul id="tech">
-
-            <!--
-            <li><span>105</span><p># Students that meet the target</p></li>
-            <li><span class="green">78%</span><p>% of total (135)</p></li>-->
             
           </ul>
-      <img src="assets/images/graph.png">
-      <img src="assets/images/circle-graphic.png">
+
+      <div id="barra-tech" style="width: 230px; height: 230px; display: inline-block;"></div>
+       <div id="torta-tech" style="width: 230px; height:230px; display: inline-block; margin-left: 20px;"></div>
           
       </div>
 
@@ -79,13 +126,54 @@
         <li><span class="green">78%</span><p>% of total (135)</p></li>-->
       </ul>
 
-      <img src="assets/images/graph.png">
-         <img src="assets/images/circle-graphic.png">
+      <div id="barra-hse" style="width: 230px; height: 230px; display: inline-block;"></div>
+       <div id="torta-hse" style="width: 230px; height:230px; display: inline-block; margin-left: 20px;"></div>
           
       </div>
       
 
     </section>
+
+     <section id="sup"> <!--sección datos inferiores-->
+
+    <div id="enrollment" class="datasup">
+
+      <h2>ENROLLMENT</h2>
+
+      <ul id="inscritas-bajas">
+        
+      </ul>
+
+      <div id="piechart" style="width: 220px; height:220px; margin-left: 40px;"></div>
+      
+      
+    </div>
+
+
+    <div id="achievement" class="datasup">
+
+      <h2>ACHIEVEMENT</h2>
+
+      <ul id="meta">
+
+      </ul>
+      <div id="columnchart_values" style = "width: 350px; height:100px; display: inline-block;"></div>
+    </div>
+
+
+    <div id="netpromoter" class="datasup">
+
+      <h2>NET PROMOTER SCORE</h2>
+
+      <ul id="net">
+        <li><span class="green">78%</span><p>% cumulative nps</p></li>
+        <li><p>60% Promoters</p> <p>30% Passive</p> <p>10% Detractors</p></li>
+      </ul>
+      <img src="assets/images/graph.png">
+      
+    </div>
+
+    </section> <!--sección datos inferiores-->
 
     </main>
 
