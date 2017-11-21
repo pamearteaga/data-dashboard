@@ -46,13 +46,17 @@ header img{
 	margin-top: 1%;
 }
 
+
+
 #header{
-    padding: 0 4%;
-    width: 92%;
-    background-color:#5D5D5F;
+   margin:auto;
+   width: 100px;
+   padding: 0;
+   font-family: sans-serif;
+   float: left;
+   margin-top: -16px;
 
 }
-
 ul li{
    list-style: none;
 
@@ -126,36 +130,70 @@ a:hover {
 }
 
 
-.menu{
-    /*outline: 1px solid blue;*/
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    background: #5D5D5F ;
-    line-height: 35px;
-    overflow: auto;
+
+/**********sección alumnas ***********/
+
+
+
+
+#student{
+   width: 100%;
+   height: auto;
+   padding: 0;
+   margin-top: -10;
+   float: left;
+   background-color:#F7F7F7 ;
+
+   
 
 }
-.menu li{
-    /*outline: 1px solid red;*/
-    width: 100px;
-    /*display: inline-block;*/
-    text-align: center;
-    float: left;
+#box{
+   
+   
+   float: right;
+   display: inline-block;
+   
+}
+#right{
+   width: 500px;
+   height: 200px;
+   background-color:#E1E1E1 ;
+   margin: 20px;
+
+   
+   border-radius: 10px;
+   border: solid 1px #000;
 
 }
-a{
-    /*outline: 1px solid green;*/
-    text-decoration: none;
-    font-family: sans-serif;
-    color:#fff;
-    display: block;
+
+img{
+   margin-top: 40px;
+   margin-left: 0px;
+
 }
 
-a:hover {
-    background: #f9a91a ;
-    color:#000;
+.intro{
+float: right;
+ background-color: #000;
+ width: 12%;
+ height: 15%;
+ margin: 10px;
+ margin-top: 30px;
+ color: #fff;
+ text-align: center;
+ padding: 2px;
 }
+h5, h3{
+   text-align: center;
+   margin-top: -150px;
+   display: inline-block;
+   margin-left: 50px;
+
+}
+
+
+
+
 
 
 /********** sección superior **********/
