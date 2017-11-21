@@ -7,7 +7,7 @@ console.log(data);
 
 // esta variable cambia todos datos y gráficos para adaptarse a la generación
 //cambie el nombre y año de la generación para probar
-var generacion = data.LIM['2017-1']; 
+var generacion = data.LIM['2017-2']; 
 
 
 var estudiantes = generacion.students; // objeto students
