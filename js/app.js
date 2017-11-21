@@ -4,7 +4,7 @@ google.charts.load('current', {'packages':['corechart']}); // graficos
 console.log(data);
 
 
-var generacion = data.SCL['2017-1']; // esta variable cambia todos datos y gráficos
+var generacion = data.LIM['2017-1']; // esta variable cambia todos datos y gráficos
 var estudiantes = generacion.students; // objeto students
 var opiniones = generacion.ratings; // objeto rating
 
@@ -465,6 +465,9 @@ var npsSprint1 = ratingsSprint1.nps;
 var promotersSprint1 = npsSprint1.promoters;
 var passiveSprint1 = npsSprint1.passive;
 var detractorsSprint1 = npsSprint1.detractors;
+var satisfactionSprint1 = ratingsSprint1.student;
+var cumpleSprint1 = satisfactionSprint1.cumple;
+var superaSprint1 = satisfactionSprint1.supera;
 
 
 // SPRINT 2
@@ -476,11 +479,24 @@ var npsSprint2 = ratingsSprint2.nps;
 var promotersSprint2 = npsSprint2.promoters;
 var passiveSprint2 = npsSprint2.passive;
 var detractorsSprint2 = npsSprint2.detractors;
+var satisfactionSprint2 = ratingsSprint2.student;
+var cumpleSprint2 = satisfactionSprint2.cumple;
+var superaSprint2 = satisfactionSprint2.supera;
+
+
 
 
 // PROMEDIOS RATINGS
 
 var nps = parseInt(((promotersSprint1 - detractorsSprint1) + (promotersSprint2 - detractorsSprint2)) / 2);
+var promoters = parseInt((promotersSprint1 + promotersSprint2) / 2);
+var passive = parseInt((passiveSprint1 + passiveSprint2) / 2);
+var detractors = parseInt((detractorsSprint1 + detractorsSprint2) / 2);
+var satisfaction1 = parseInt(cumpleSprint1 +  superaSprint1);
+var satisfaction2 = parseInt(cumpleSprint2 +  superaSprint2);
+var satisfaction = parseInt((satisfaction1 + satisfaction2) / 2);
+var teacher = (teacherSprint1 + teacherSprint2) / 2;
+var jedi = (jediSprint1 + jediSprint2) / 2;
 
 
 
@@ -507,7 +523,63 @@ var npsDetrac = document.createElement("p");
     contNpsPuntos.appendChild(frasenpsPuntos);
 
 
+    // porcentajes
+    npsProm.appendChild(document.createTextNode(promoters + "% Promoters"));
+    npsPass.appendChild(document.createTextNode(passive + "% Passive"));
+    npsDetrac.appendChild(document.createTextNode(detractors + "% Detractors"));
+    contNpsPorcentajes.appendChild(npsProm);
+    contNpsPorcentajes.appendChild(npsPass);
+    contNpsPorcentajes.appendChild(npsDetrac);
+    contNps.appendChild(contNpsPorcentajes);
 
+    
+
+// nodos satisfaction
+
+var contSatis = document.getElementById("satisfaction");
+var contSatisPorcentaje = document.createElement("li");
+var satisPorcentaje = document.createElement("span");
+   
+    satisPorcentaje.appendChild(document.createTextNode(satisfaction));
+    contSatisPorcentaje.appendChild(satisPorcentaje);
+    contSatis.appendChild(contSatisPorcentaje);
+    // frase
+    var fraseSatis = document.createElement("p");
+    var textoSatis = document.createTextNode("% Meeting or exceeding expectations (cumulative)");
+    fraseSatis.appendChild(textoSatis);
+    contSatisPorcentaje.appendChild(fraseSatis);
+
+
+// nodos teacher
+
+var contTeacher = document.getElementById("teacher");
+var contTeacherNota = document.createElement("li");
+var teacherNota = document.createElement("span");
+   
+    teacherNota.appendChild(document.createTextNode(teacher));
+    contTeacherNota.appendChild(teacherNota);
+    contTeacher.appendChild(contTeacherNota);
+    // frase
+    var fraseTeacher = document.createElement("p");
+    var textoTeacher = document.createTextNode("Overall teacher rating (cumulative)");
+    fraseTeacher.appendChild(textoTeacher);
+    contTeacherNota.appendChild(fraseTeacher);
+
+
+// nodos jedi
+
+var contJedi = document.getElementById("jedi");
+var contJediNota = document.createElement("li");
+var jediNota = document.createElement("span");
+   
+    jediNota.appendChild(document.createTextNode(jedi));
+    contJediNota.appendChild(jediNota);
+    contJedi.appendChild(contJediNota);
+    // frase
+    var fraseJedi = document.createElement("p");
+    var textoJedi = document.createTextNode("Overall jedi rating (cumulative)");
+    fraseJedi.appendChild(textoJedi);
+    contJediNota.appendChild(fraseJedi);
 
 
 
@@ -516,7 +588,7 @@ var npsDetrac = document.createElement("p");
 /*************** GRÁFICOS ***************/
 
 
-// GRÁFICO BARRAS VERTICALES
+// GRÁFICO ACHIEVEMENT
 
 
 google.charts.setOnLoadCallback(graficoBarras);
@@ -715,6 +787,92 @@ google.charts.setOnLoadCallback(datos);
        chart.draw(data, options);
      }
 
+
+
+// GRAFICO STUDEnt satisfaction
+
+
+google.charts.setOnLoadCallback(datosSatis);
+
+     function datosSatis() {
+       var data = google.visualization.arrayToDataTable([
+         ['', 'Supera', 'Cumple'],
+         ['S1', superaSprint1, cumpleSprint1],
+         ['S2', superaSprint2, cumpleSprint2],
+      
+       ]);
+
+       var options = {
+         curveType: 'function',
+         legend: { position: 'bottom' }
+       };
+
+       var chart = new google.visualization.LineChart(document.getElementById('satis-lineas'));
+
+       chart.draw(data, options);
+     }
+
+
+
+// GRAFICOS TEACHER
+
+     google.charts.setOnLoadCallback(teacherBarras);
+   function teacherBarras() {
+     var data = google.visualization.arrayToDataTable([
+       ["S1", "Students", { role: "style" } ],
+       ["S1", teacherSprint1 , "orange"],
+       ["S2", teacherSprint2 , "brown"],
+      
+     ]);
+
+     var view = new google.visualization.DataView(data);
+     view.setColumns([0, 1,
+                      { calc: "stringify",
+                        sourceColumn: 1,
+                        type: "string",
+                        role: "annotation" },
+                      2]);
+
+     var options = {
+       width: 300,
+       height: 200,
+       bar: {groupWidth: "95%"},
+       legend: { position: "none" },
+     };
+     var chart = new google.visualization.ColumnChart(document.getElementById("barras-teachers"));
+     chart.draw(view, options);
+ }
+
+
+
+// GRAFICOS JEDI
+
+     google.charts.setOnLoadCallback(jediBarras);
+   function jediBarras() {
+     var data = google.visualization.arrayToDataTable([
+       ["S1", "Students", { role: "style" } ],
+       ["S1", jediSprint1 , "orange"],
+       ["S2", jediSprint2 , "brown"],
+      
+     ]);
+
+     var view = new google.visualization.DataView(data);
+     view.setColumns([0, 1,
+                      { calc: "stringify",
+                        sourceColumn: 1,
+                        type: "string",
+                        role: "annotation" },
+                      2]);
+
+     var options = {
+       width: 300,
+       height: 200,
+       bar: {groupWidth: "95%"},
+       legend: { position: "none" },
+     };
+     var chart = new google.visualization.ColumnChart(document.getElementById("barras-jedi"));
+     chart.draw(view, options);
+ }
 
 
 

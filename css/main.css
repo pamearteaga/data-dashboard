@@ -54,56 +54,108 @@ header img{
 }
 
 ul li{
-    list-style: none;
+   list-style: none;
 
 }
 ul.nav{
-
-    padding: 0px;
+   padding: 0px;
 }
 .nav li a{
-    background-color:#5D5D5F ;
-    color:#fff;
-    text-decoration: none;
-    padding: 10px 15px;
-    display:block;
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-
+   background-color:#5D5D5F ;
+   color:#fff;
+   text-decoration: none;
+   padding: 8.5px 15px;
+   display:block;
 
 }
 .nav li a:hover{
-    border-color:#434343;
+   border-color:#434343 ;
 }
 .nav li ul{
-    display:none;
-    position: absolute;
-    min-width: 140px;
+   display:none;
+   position: absolute;
+   min-width: 140px;
 }
 .nav li:hover > ul{
-    display: block;
+   display: block;
 }
 .nav li ul li a{
-   
-    font-size: 14px;
-    font-weight: 400;
-    letter-spacing: 0.05em;
+   background-color:;
 }
 .nav li ul li ul li a{
-    background-color:#626264 ;
-
+   background-color:#626264 ;
 }
 .nav li ul li{
-    position: relative;
+   position: relative;
 
 }
 .nav li ul li ul{
-    right: -140px;
-    top: 0px;
-    z-index: 999;
+   right: -140px;
+   top: 20px;
+   z-index: 999;
+}
+ .menu{
+   /*outline: 1px solid blue;*/
+   list-style: none;
+   padding: 0;
+   margin: 0;
+   background: #5D5D5F ;
+   line-height: 35px;
+   overflow: auto;
+
+}
+.menu li{
+   /*outline: 1px solid red;*/
+   width: 100px;
+   /*display: inline-block;*/
+   text-align: center;
+   float: left;
+
+}
+a{
+   /*outline: 1px solid green;*/
+   text-decoration: none;
+   font-family: sans-serif;
+   color:#fff;
+   display: block;
 }
 
+a:hover {
+   background: #f9a91a ;
+   color:#000;
+}
+
+
+.menu{
+    /*outline: 1px solid blue;*/
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    background: #5D5D5F ;
+    line-height: 35px;
+    overflow: auto;
+
+}
+.menu li{
+    /*outline: 1px solid red;*/
+    width: 100px;
+    /*display: inline-block;*/
+    text-align: center;
+    float: left;
+
+}
+a{
+    /*outline: 1px solid green;*/
+    text-decoration: none;
+    font-family: sans-serif;
+    color:#fff;
+    display: block;
+}
+
+a:hover {
+    background: #f9a91a ;
+    color:#000;
+}
 
 
 /********** sección superior **********/
