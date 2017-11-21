@@ -4,8 +4,9 @@ google.charts.load('current', {'packages':['corechart']}); // graficos
 console.log(data);
 
 
-
-var generacion = data.SCL['2016-2'].students; 
+var generacion = data.SCL['2017-1']; // esta variable cambia todos datos y gráficos
+var estudiantes = generacion.students; // objeto students
+var opiniones = generacion.ratings; // objeto rating
 
 
 /* inscritas y bajas - recuadro ENROLLMENT */
@@ -21,16 +22,16 @@ var total = 0;
 var porcentaje = 0;
 
 
-for (var i = 0; i < generacion.length; i++) {
+for (var i = 0; i < estudiantes.length; i++) {
 	
 	total++;
 
 
-	if (generacion[i].active === true ) {
+	if (estudiantes[i].active === true ) {
          
         ++inscCont;
 
-	} else if (generacion[i].active === false) {
+	} else if (estudiantes[i].active === false) {
 
 		++bajasCont;
 	}
@@ -80,15 +81,15 @@ var sprintMetaHSE = 840;
 var sprintMetaTech = 1260;
 
 
-for (var i = 0; i < generacion.length; i++) { // variables de notas para cada sprint
+for (var i = 0; i < estudiantes.length; i++) { // variables de notas para cada sprint
 	
-	if (generacion[i].active === true ) {
+	if (estudiantes[i].active === true ) {
          
 
-	    sprint1.push(generacion[i].sprints[0]);
-	    sprint2.push(generacion[i].sprints[1]);
-	    //sprint3.push(generacion[i].sprints[2]);
-	    //sprint4.push(generacion[i].sprints[3]);
+	    sprint1.push(estudiantes[i].sprints[0]);
+	    sprint2.push(estudiantes[i].sprints[1]);
+	    //sprint3.push(estudiantes[i].sprints[2]);
+	    //sprint4.push(estudiantes[i].sprints[3]);
 
 	}
     
@@ -451,46 +452,61 @@ var todasMetasHSEPorcentaje = parseInt((todasMetasHSE * 100) / total);
 
 
 
+
 /********* VARIABLES PARA DATOS RATING ********/
 
-var rating1 = [];
-var rating2 = [];
-//var rating3 = [];
-//var rating4 = [];
+
+// SPRINT 1
+
+var ratingsSprint1 = opiniones[0];
+var jediSprint1 = ratingsSprint1.jedi;
+var teacherSprint1 = ratingsSprint1.teacher;
+var npsSprint1 = ratingsSprint1.nps;
+var promotersSprint1 = npsSprint1.promoters;
+var passiveSprint1 = npsSprint1.passive;
+var detractorsSprint1 = npsSprint1.detractors;
 
 
-for (var i = 0; i < generacion.length; i++) { // variables de notas para cada sprint
-	
-	if (generacion[i].active === true ) {
-         
+// SPRINT 2
 
-	    rating1.push(generacion[i].sprints[0]);
-	    rating2.push(generacion[i].sprints[1]);
-	    //sprint3.push(generacion[i].sprints[2]);
-	    //sprint4.push(generacion[i].sprints[3]);
-
-	}
-    
-    
-}
+var ratingsSprint2 = opiniones[1];
+var jediSprint2 = ratingsSprint2.jedi;
+var teacherSprint2 = ratingsSprint2.teacher;
+var npsSprint2 = ratingsSprint2.nps;
+var promotersSprint2 = npsSprint2.promoters;
+var passiveSprint2 = npsSprint2.passive;
+var detractorsSprint2 = npsSprint2.detractors;
 
 
+// PROMEDIOS RATINGS
 
-for (var i = 0; i < generacion.length; i++) {
-	
-	total++;
+var nps = parseInt(((promotersSprint1 - detractorsSprint1) + (promotersSprint2 - detractorsSprint2)) / 2);
 
 
-	if (generacion[i].active === true ) {
-         
-        ++inscCont;
 
-	} else if (generacion[i].active === false) {
+/* recuadro NET PROMOTER SCORE */
 
-		++bajasCont;
-	}
+// creando los nodos
+var contNps = document.getElementById("net");
+var contNpsPuntos = document.createElement("li");
+var contNpsPorcentajes = document.createElement("li");
+var npsPuntos = document.createElement("span");
+var npsProm = document.createElement("p");
+var npsPass = document.createElement("p");
+var npsDetrac = document.createElement("p");
 
-}
+   // NPS%
+    npsPuntos.appendChild(document.createTextNode(nps + "%"));
+    npsPuntos.setAttribute("class","green")
+    contNpsPuntos.appendChild(npsPuntos);
+    contNps.appendChild(contNpsPuntos);
+    // frase
+    var frasenpsPuntos = document.createElement("p");
+    var textonpsPuntos = document.createTextNode("% Cumulative nps");
+    frasenpsPuntos.appendChild(textonpsPuntos);
+    contNpsPuntos.appendChild(frasenpsPuntos);
+
+
 
 
 
@@ -684,8 +700,8 @@ google.charts.setOnLoadCallback(datos);
      function datos() {
        var data = google.visualization.arrayToDataTable([
          ['', 'Promoters', 'Detractors' , 'Passive'],
-         ['S1', 900, 300, 500],
-         ['S2', 1170, 400, 300],
+         ['S1', promotersSprint1, passiveSprint1, detractorsSprint1],
+         ['S2', promotersSprint2, passiveSprint2, detractorsSprint2],
       
        ]);
 
