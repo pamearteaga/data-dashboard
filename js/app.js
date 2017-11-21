@@ -4,7 +4,12 @@ google.charts.load('current', {'packages':['corechart']}); // graficos
 console.log(data);
 
 
-var generacion = data.LIM['2017-1']; // esta variable cambia todos datos y gráficos
+
+// esta variable cambia todos datos y gráficos para adaptarse a la generación
+//cambie el nombre y año de la generación para probar
+var generacion = data.LIM['2017-2']; 
+
+
 var estudiantes = generacion.students; // objeto students
 var opiniones = generacion.ratings; // objeto rating
 
@@ -342,7 +347,7 @@ var sprint1Meta = (sprint1HSEMeta + sprint1TechMeta) / 2;
 var sprint2Meta = (sprint2HSEMeta + sprint2TechMeta) / 2;
 var sprint3Meta = (sprint3HSEMeta + sprint3TechMeta) / 2;
 var sprint4Meta = (sprint4HSEMeta + sprint4TechMeta) / 2;
-var sprintsMetaTotal = (sprint1Meta + sprint2Meta + sprint3Meta + sprint4Meta) / 4; // no seusó parseInt en este resultado ya que cambiaba mucho el porcentaje real
+var sprintsMetaTotal = parseInt((sprint1Meta + sprint2Meta + sprint3Meta + sprint4Meta) / 4); 
 var sprintsMetaPorcentaje = parseInt((sprintsMetaTotal * 100) / total);
 
 
@@ -386,7 +391,7 @@ var contMetaTechEstudiantes = document.createElement("li");
 var contMetaTechPorcentaje = document.createElement("li");
 var metaTech = document.createElement("span");
 var porcentajeMetaTech = document.createElement("span");
-var todasMetasTech = (sprint1TechMeta + sprint2TechMeta + sprint3TechMeta + sprint4TechMeta) / 4; // promedio de alumnas que alcanzaron la meta tech
+var todasMetasTech = parseInt((sprint1TechMeta + sprint2TechMeta + sprint3TechMeta + sprint4TechMeta) / 4); // promedio de alumnas que alcanzaron la meta tech
 var todasMetasTechPorcentaje = parseInt((todasMetasTech * 100) / total);
 
 
@@ -423,7 +428,7 @@ var contMetaHSEEstudiantes = document.createElement("li");
 var contMetaHSEPorcentaje = document.createElement("li");
 var metaHSE = document.createElement("span");
 var porcentajeMetaHSE = document.createElement("span");
-var todasMetasHSE = (sprint1HSEMeta + sprint2HSEMeta + sprint3HSEMeta + sprint4HSEMeta) / 4; // promedio de alumnas que alcanzaron la meta HSE
+var todasMetasHSE = parseInt((sprint1HSEMeta + sprint2HSEMeta + sprint3HSEMeta + sprint4HSEMeta) / 4); // promedio de alumnas que alcanzaron la meta HSE
 var todasMetasHSEPorcentaje = parseInt((todasMetasHSE * 100) / total);
 
 
