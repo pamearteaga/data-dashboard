@@ -7,12 +7,18 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <link rel="icon" type="image/png" href="assets/favicomatic/favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" type="image/png" href="assets/favicomatic/favicon-16x16.png" sizes="16x16" />
+
   </head>
+
+
   <body>
 
   <header>
-    <section id="contenedorInicial">
-     <h1 class="titu"><img src="assets/images/logo-laboratoria.svg" alt="logoLab"></h1>
+    <section >
+     <img src="assets/images/logo-laboratoria.svg" alt="logoLab">
    </section>
 
    <!--menu desplegable-->
@@ -57,6 +63,9 @@
    </section>
    </header>
 
+
+   <!--GRAFICOS-->
+
     <main>
 
   
@@ -83,7 +92,7 @@
       <ul id="meta">
 
       </ul>
-      <div id="columnchart_values" style = "width: 350px; height:100px; display: inline-block;"></div>
+      <div id="columnchart_values" style = "width: 370px; height:100px; display: inline-block;"></div>
     </div>
 
 
@@ -95,7 +104,7 @@
         <li><span class="green">78%</span><p>% cumulative nps</p></li>
         <li><p>60% Promoters</p> <p>30% Passive</p> <p>10% Detractors</p></li>
       </ul>
-      <img src="assets/images/graph.png">
+      <div id="net-promo" style="width: 330px; height: 170px"></div>
       
     </div>
 
@@ -136,38 +145,34 @@
 
      <section id="sup"> <!--sección datos inferiores-->
 
-    <div id="enrollment" class="datasup">
+    <div id="student-satis" class="datasup">
 
-      <h2>ENROLLMENT</h2>
+      <h2>STUDENT SATISFACTION</h2>
 
-      <ul id="inscritas-bajas">
-        
+      <ul id="satisfaction">
+      <li><span class="green">78%</span><p>% cumulative nps</p></li>
       </ul>
-
-      <div id="piechart" style="width: 220px; height:220px; margin-left: 40px;"></div>
-      
-      
+      <img src="assets/images/graph.png">
     </div>
 
 
-    <div id="achievement" class="datasup">
+    <div id="teacher-rating" class="datasup">
 
-      <h2>ACHIEVEMENT</h2>
+      <h2>TEACHER RATING</h2>
 
-      <ul id="meta">
-
+      <ul id="teacher">
+         <li><span class="green">78%</span><p>% cumulative nps</p></li>
       </ul>
-      <div id="columnchart_values" style = "width: 350px; height:100px; display: inline-block;"></div>
+      <img src="assets/images/graph.png">
     </div>
 
 
-    <div id="netpromoter" class="datasup">
+    <div id="jedi-rating" class="datasup">
 
-      <h2>NET PROMOTER SCORE</h2>
+      <h2>JEDI MASTER RATING</h2>
 
-      <ul id="net">
+      <ul id="jedi">
         <li><span class="green">78%</span><p>% cumulative nps</p></li>
-        <li><p>60% Promoters</p> <p>30% Passive</p> <p>10% Detractors</p></li>
       </ul>
       <img src="assets/images/graph.png">
       
@@ -176,6 +181,10 @@
     </section> <!--sección datos inferiores-->
 
     </main>
+
+    <footer>
+      <p>© Laboratoria 2017</p>
+    </footer>
 
 		<!-- Base de datos -->
 		<script src="./js/data.js"></script>

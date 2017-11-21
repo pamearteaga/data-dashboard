@@ -5,33 +5,7 @@ console.log(data);
 
 
 
-/*
-var estudiante = data.AQP['2017-1'].students;
-var select = document.getElementById("seleccion").value;
-document.getElementById("seleccion").value = "";
-var op1 = document.getElementById("p1").text;
-var op2 = document.getElementById("p2").text;
-
- 
- function varEstudiante(){
-
-if (select === op1) {
-
-	var estudiante = data.AQP['2016-2'].students;
-
-} else if (select === op2) {
-    
-   var estudiante = data.AQP['2017-1'].students;
-
-}
-
-};
-
-console.log(estudiante);
-
-*/
-
-var generacion = data.LIM['2017-1'].students; 
+var generacion = data.SCL['2016-2'].students; 
 
 
 /* inscritas y bajas - recuadro ENROLLMENT */
@@ -367,7 +341,7 @@ var sprint1Meta = (sprint1HSEMeta + sprint1TechMeta) / 2;
 var sprint2Meta = (sprint2HSEMeta + sprint2TechMeta) / 2;
 var sprint3Meta = (sprint3HSEMeta + sprint3TechMeta) / 2;
 var sprint4Meta = (sprint4HSEMeta + sprint4TechMeta) / 2;
-var sprintsMetaTotal = parseInt((sprint1Meta + sprint2Meta + sprint3Meta + sprint4Meta) / 4); // no seusó parseInt en este resultado ya que cambiaba mucho el porcentaje real
+var sprintsMetaTotal = (sprint1Meta + sprint2Meta + sprint3Meta + sprint4Meta) / 4; // no seusó parseInt en este resultado ya que cambiaba mucho el porcentaje real
 var sprintsMetaPorcentaje = parseInt((sprintsMetaTotal * 100) / total);
 
 
@@ -411,7 +385,7 @@ var contMetaTechEstudiantes = document.createElement("li");
 var contMetaTechPorcentaje = document.createElement("li");
 var metaTech = document.createElement("span");
 var porcentajeMetaTech = document.createElement("span");
-var todasMetasTech = parseInt((sprint1TechMeta + sprint2TechMeta + sprint3TechMeta + sprint4TechMeta) / 4); // promedio de alumnas que alcanzaron la meta tech
+var todasMetasTech = (sprint1TechMeta + sprint2TechMeta + sprint3TechMeta + sprint4TechMeta) / 4; // promedio de alumnas que alcanzaron la meta tech
 var todasMetasTechPorcentaje = parseInt((todasMetasTech * 100) / total);
 
 
@@ -448,7 +422,7 @@ var contMetaHSEEstudiantes = document.createElement("li");
 var contMetaHSEPorcentaje = document.createElement("li");
 var metaHSE = document.createElement("span");
 var porcentajeMetaHSE = document.createElement("span");
-var todasMetasHSE = parseInt((sprint1HSEMeta + sprint2HSEMeta + sprint3HSEMeta + sprint4HSEMeta) / 4); // promedio de alumnas que alcanzaron la meta HSE
+var todasMetasHSE = (sprint1HSEMeta + sprint2HSEMeta + sprint3HSEMeta + sprint4HSEMeta) / 4; // promedio de alumnas que alcanzaron la meta HSE
 var todasMetasHSEPorcentaje = parseInt((todasMetasHSE * 100) / total);
 
 
@@ -479,14 +453,19 @@ var todasMetasHSEPorcentaje = parseInt((todasMetasHSE * 100) / total);
 
 /********* VARIABLES PARA DATOS RATING ********/
 
+var rating1 = [];
+var rating2 = [];
+//var rating3 = [];
+//var rating4 = [];
+
 
 for (var i = 0; i < generacion.length; i++) { // variables de notas para cada sprint
 	
 	if (generacion[i].active === true ) {
          
 
-	    sprint1.push(generacion[i].sprints[0]);
-	    sprint2.push(generacion[i].sprints[1]);
+	    rating1.push(generacion[i].sprints[0]);
+	    rating2.push(generacion[i].sprints[1]);
 	    //sprint3.push(generacion[i].sprints[2]);
 	    //sprint4.push(generacion[i].sprints[3]);
 
@@ -527,7 +506,7 @@ for (var i = 0; i < generacion.length; i++) {
 google.charts.setOnLoadCallback(graficoBarras);
    function graficoBarras() {
      var data = google.visualization.arrayToDataTable([
-       ["S1", "Density", { role: "style" } ],
+       ["S1", "Students", { role: "style" } ],
        ["S1", sprint1Meta, "#FFC300 "],
        ["S2", sprint2Meta, "#FFC300 "],
       
@@ -558,7 +537,7 @@ google.charts.setOnLoadCallback(graficoBarras);
 google.charts.setOnLoadCallback(graficoTorta);
      function graficoTorta() {
        var data = google.visualization.arrayToDataTable([
-         ['Language', 'Speakers (in millions)'],
+         ['Enrollment', '% Dropout'],
          ['Dropout',  bajasCont],
          ['Currently', inscCont],
       
@@ -586,7 +565,7 @@ google.charts.setOnLoadCallback(graficoTorta);
 google.charts.setOnLoadCallback(graficoHorizontal);
    function graficoHorizontal() {
      var data = google.visualization.arrayToDataTable([
-       ["Element", "Density", { role: "style" } ],
+       ["Element", "Students", { role: "style" } ],
        ["S1", sprint1TechMeta, "orange"],
        ["S2", sprint2TechMeta, "yellow"],
        
@@ -615,7 +594,7 @@ google.charts.setOnLoadCallback(graficoHorizontal);
         google.charts.setOnLoadCallback(tortaTech);
      function tortaTech() {
        var data = google.visualization.arrayToDataTable([
-         ['Language', 'Speakers (in millions)'],
+         ['Students', 'Meet the target'],
          ['Dont meet target',  83],
          ['Target', todasMetasTechPorcentaje],
       
@@ -640,7 +619,85 @@ google.charts.setOnLoadCallback(graficoHorizontal);
         
 
 
+ // GRAFICO HSE
 
+google.charts.setOnLoadCallback(barraHSE);
+   function barraHSE() {
+     var data = google.visualization.arrayToDataTable([
+       ["Element", "Students", { role: "style" } ],
+       ["S1", sprint1HSEMeta, "orange"],
+       ["S2", sprint2HSEMeta, "yellow"],
+       
+     ]);
+
+     var view = new google.visualization.DataView(data);
+     view.setColumns([0, 1,
+                      { calc: "stringify",
+                        sourceColumn: 1,
+                        type: "string",
+                        role: "annotation" },
+                      2]);
+
+     var options = {
+
+       width: 250,
+       height: 250,
+       bar: {groupWidth: "95%"},
+       legend: { position: "none" },
+     };
+     var chart = new google.visualization.BarChart(document.getElementById("barra-hse"));
+     chart.draw(view, options);
+ }
+        
+
+        google.charts.setOnLoadCallback(tortaHSE);
+     function tortaHSE() {
+       var data = google.visualization.arrayToDataTable([
+         ['Target', 'Students meet the Target'],
+         ['Dont meet target',  76],
+         ['Target', todasMetasHSEPorcentaje],
+      
+       
+       ]);
+
+     var options = {
+       legend: 'none',
+       pieSliceText: 'label',
+       pieStartAngle: 90,
+       slices: {
+           0: { color: '#b87333' },
+           1: { color: '#ffc300' }
+         }
+
+     };
+
+       var chart = new google.visualization.PieChart(document.getElementById('torta-hse'));
+       chart.draw(data, options);
+     }
+
+
+
+//GRAFICO NET PROMOTER SCORE
+
+google.charts.setOnLoadCallback(datos);
+
+     function datos() {
+       var data = google.visualization.arrayToDataTable([
+         ['', 'Promoters', 'Detractors' , 'Passive'],
+         ['S1', 900, 300, 500],
+         ['S2', 1170, 400, 300],
+      
+       ]);
+
+       var options = {
+         curveType: 'function',
+         legend: { position: 'bottom' }
+       };
+
+       var chart = new google.visualization.LineChart(document.getElementById('net-promo'));
+
+       chart.draw(data, options);
+     }
 
 
 
